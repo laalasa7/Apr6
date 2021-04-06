@@ -1,0 +1,26 @@
+{
+	"name": "AzureSqlTableOnPremiseSink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseTrial",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tn": {
+				"type": "string",
+				"defaultValue": "Product"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().tn",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

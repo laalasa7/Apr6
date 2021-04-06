@@ -1,0 +1,25 @@
+{
+	"name": "AzureSqlTablesalespersontotal",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseTrial",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tname": {
+				"type": "string",
+				"defaultValue": "SalesPerson"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"table": {
+				"value": "@dataset().tname",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

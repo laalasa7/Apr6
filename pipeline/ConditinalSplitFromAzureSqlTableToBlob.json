@@ -1,0 +1,42 @@
+{
+	"name": "ConditinalSplitFromAzureSqlTableToBlob",
+	"properties": {
+		"activities": [
+			{
+				"name": "conditionalsplitfromsqltoblob",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "conditionalsplitfromsqltoblob",
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"sink1": {
+								"tname": "Black"
+							},
+							"sink2": {
+								"j2": "Reb"
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-04-06T14:26:49Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
