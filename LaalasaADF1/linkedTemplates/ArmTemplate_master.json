@@ -1,0 +1,139 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "LaalasaADF1"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"AzureSqlDatabaseTrial_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseTrial'"
+		},
+		"AzureSqlSampleDBLs_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlSampleDBLs'"
+		},
+		"SqlServerADWorls_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SqlServerADWorls'"
+		},
+		"SqlServerADWorls_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'SqlServerADWorls'"
+		},
+		"onpremiseSQLServer_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'onpremiseSQLServer'"
+		},
+		"onpremiseSQLServer_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'onpremiseSQLServer'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://laalasagen2acc.dfs.core.windows.net"
+		},
+		"SqlServerADWorls_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "LAPTOP-A3EDGH7A\\LAALASA"
+		},
+		"onpremiseSQLServer_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "LAPTOP-A3EDGH7A\\LAALASA"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "LaalasaADF1_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureBlobStorage1_connectionString": {
+						"value": "[parameters('AzureBlobStorage1_connectionString')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"AzureSqlDatabaseTrial_connectionString": {
+						"value": "[parameters('AzureSqlDatabaseTrial_connectionString')]"
+					},
+					"AzureSqlSampleDBLs_connectionString": {
+						"value": "[parameters('AzureSqlSampleDBLs_connectionString')]"
+					},
+					"SqlServerADWorls_connectionString": {
+						"value": "[parameters('SqlServerADWorls_connectionString')]"
+					},
+					"SqlServerADWorls_password": {
+						"value": "[parameters('SqlServerADWorls_password')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"SqlServerADWorls_properties_typeProperties_userName": {
+						"value": "[parameters('SqlServerADWorls_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "LaalasaADF1_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"onpremiseSQLServer_connectionString": {
+						"value": "[parameters('onpremiseSQLServer_connectionString')]"
+					},
+					"onpremiseSQLServer_password": {
+						"value": "[parameters('onpremiseSQLServer_password')]"
+					},
+					"onpremiseSQLServer_properties_typeProperties_userName": {
+						"value": "[parameters('onpremiseSQLServer_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'LaalasaADF1_ArmTemplate_0')]"
+			]
+		}
+	]
+}
