@@ -1,0 +1,13 @@
+{
+	"name": "AzureDataLakeStore1",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDataLakeStore",
+		"typeProperties": {
+			"dataLakeStoreUri": "https://laalasagen2.azuredatalakestore.net/webhdfs/v1",
+			"tenant": "cd90d295-37df-427f-b4a8-1ebb3645664a",
+			"subscriptionId": "fbdf5044-bb4e-496d-bd59-cf117486514d",
+			"resourceGroupName": "LaalasaLTI917"
+		}
+	}
+}
