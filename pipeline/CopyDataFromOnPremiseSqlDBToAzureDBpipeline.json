@@ -43,7 +43,10 @@
 				"outputs": [
 					{
 						"referenceName": "AzureSqlTableOnPremiseSink",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"tn": "Product"
+						}
 					}
 				]
 			}
