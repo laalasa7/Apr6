@@ -8,7 +8,7 @@
 		"parameters": {
 			"tname": {
 				"type": "string",
-				"defaultValue": "SalesPerson"
+				"defaultValue": "TotalSales"
 			}
 		},
 		"annotations": [],
